@@ -5,6 +5,51 @@
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
 
 int main() {
+    int qnt_mov, escolha_peca, i;
+    char mov_pc[50];
+    char* peca;
+
+    printf("Escolha a peça!\nBispo.\nTorre.\nRainha.\n");
+    scanf("%d", &escolha_peca);
+
+    switch (escolha_peca)
+    {
+    case 1:
+        peca = "Bispo";
+        printf("Escolha qual direção do Bispo!\n1-Diagonal,Esquerda\n2-Diagonal,Direita\n\n");
+        scanf("%s", mov_pc);
+        printf("Quantidade de movimentação!\n");
+        scanf("%d", &qnt_mov);
+        break;
+
+    case 2:
+        peca = "Torre";
+        printf("Escolha qual direção da Torre!\nCima\nBaixo\n\n");
+        scanf("%s", mov_pc);
+        printf("Quantidade de movimentação!\n");
+        scanf("%d", &qnt_mov);
+        break;
+
+    case 3:
+        peca = "Rainha";
+        printf("Escolha qual direção da Rainha!\nCima\nBaixo\n\n");
+        scanf("%s", mov_pc);
+        printf("Quantidade de movimentação!\n");
+        scanf("%d", &qnt_mov);
+    default:
+        printf("Escolha entre as três opções!");
+        break;
+    }
+
+        
+    for (i = 0; i <= (qnt_mov-1); i++)
+    {
+        if(escolha_peca == 1){
+            printf("%s foi uma casa para %s!\n", peca, mov_pc);
+        }
+    }
+
+
     // Nível Novato - Movimentação das Peças
     // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
 
@@ -17,16 +62,6 @@ int main() {
     // Implementação de Movimentação da Rainha
     // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
 
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
-
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
-
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
 
     return 0;
 }
