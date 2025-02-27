@@ -1,76 +1,87 @@
 #include <stdio.h>
 
-// Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
+//Movimento do Bispo.
+void Bispo(int mov_bispo){
+    if (mov_bispo > 0)
+    {
+        printf("Diagonal direita para cima!\n");
+        Bispo(mov_bispo - 1);
+    }
+}
+
+//Movimento da Torre.
+void Torre(int mov_torre){
+    if (mov_torre > 0)
+    {
+        printf("Direita\n");
+        Torre(mov_torre - 1);
+    }
+}
+
+//Movimento da Rainha.
+void Rainha(int mov_rainha){
+    if (mov_rainha > 0)
+    {
+        printf("Esquerda\n");
+        Rainha(mov_rainha - 1);
+    }
+}
+
+//Movimento do Cavalo.
+void Cavalo(){
+    for (int i = 1, j = 2; i > 0, j > 0; i--, j--)
+    {
+        if (i > 0  ){
+            printf("Direita\n");
+        } 
+        if (j > 0)
+        {
+            printf("Cima\n");
+        }
+        
+    }
+}
+
+
 int main() {
-    // Inicializando as variaveis
-    int qnt_mov, escolha_peca, i;
-    char mov_pc[50];
-    char mov_pcx[10];
+
+// Inicializando as variaveis.
+    int escolha_peca;
     char* peca;
 
-    // Recolhendo info
+//Menu das escolhas.
     printf("Escolha a peça!\n(1)Bispo.\n(2)Torre.\n(3)Rainha.\n(4)Cavalo\n");
     scanf("%d", &escolha_peca);
 
-    //Bloco de escolha
+//Chamando as funções.
     switch (escolha_peca)
     {
     case 1:
-        peca = "Bispo";
-        printf("Escolha qual direção do Bispo!\n --EXEMPLO 'Diagonal Direita'\n\n");
-        scanf("%s %s", mov_pc, mov_pcx);
-        printf("Quantidade de movimentação!\n");
-        scanf("%d", &qnt_mov);
+        printf("Bispo:\n");
+        Bispo(5);
         break;
 
     case 2:
-        peca = "Torre";
-        printf("Escolha qual direção da Torre!\n --EXEMPLO 'Direita'\n\n");
-        scanf("%s", mov_pc);
-        printf("Quantidade de movimentação!\n");
-        scanf("%d", &qnt_mov);
+        printf("Torre:\n");
+        Torre(5);
         break;
 
     case 3:
-        peca = "Rainha";
-        printf("Escolha qual direção da Rainha!\n --EXEMPLO 'Diagonal Direita'\n\n");
-        scanf("%s", mov_pc);
-        printf("Quantidade de movimentação!\n");
-        scanf("%d", &qnt_mov);
+        printf("Rainha:\n");
+        Rainha(8);
         break;
-            
+
     case 4:
-        peca = "Cavalo";
-        printf("Escolha qual direção do Cavalo!\n --EXEMPLO 'Cima Direita'\n\n");
-        scanf("%s %s", mov_pc, mov_pcx);
-        int mov_x = 3;
-        int mov_y = 2;
-
-        //Inicializando zerado
-        int x = 0;
-        int y = 0;
-
-        //loop para movimentar o cavalo 
-        for (x; x < mov_x; x++)
-        {
-            while(y < mov_y){
-                        //DIRECAO
-                printf("%s: %s. \n", peca, mov_pc);
-                y++;
-                    }
-                    //DIRECAO
-            printf("%s: %s.\n", peca, mov_pcx);
+        printf("Cavalo:\n");
+        Cavalo();
         break;
-        }
-    }
-    //Exibir os as direções da peça feita.
-    for (i = 0; i <= (qnt_mov-1); i++)
-    {
-        if(escolha_peca <= 4){
-            printf("%s, %s!. %s\n", peca, mov_pc, mov_pcx);
-        }
+
+//Tratamento caso a escolha seja invalida.
+    default:
+        printf("\n\nEscolha Invalida!\n\n");
+        main();
+        break;
     }
     return 0;
 }
+
